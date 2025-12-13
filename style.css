@@ -1,0 +1,115 @@
+/* ===== GLOBAL ===== */
+body {
+    margin: 0;
+    padding: 0;
+    max-width: 80%;
+    margin: auto;
+    background: linear-gradient(to right, #e8f5e9, #f1f8e9);
+}
+
+
+/* ===== MAIN CONTAINER ===== */
+.container {
+    width: 600px;
+    margin: 80px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+
+/* ===== HEADINGS ===== */
+h1, h2 {
+    text-align: center;
+    color: #2e7d32;
+    margin-bottom: 20px;
+}
+
+
+/* ===== FORMS ===== */
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: #2e7d32;
+    color: white;
+    font-size: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+
+button:hover {
+    background: #1b5e20;
+}
+
+
+/* ===== TABLE STYLE ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+
+th {
+    background: #2e7d32;
+    color: white;
+    padding: 10px;
+}
+
+
+td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+
+/* ===== LINKS ===== */
+a {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px;
+    background: #43a047;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+
+a:hover {
+    background: #2e7d32;
+}
+
+
+/* ===== API OUTPUT ===== */
+pre {
+    background: #f5f5f5;
+    padding: 12px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 13px;
+}
+input, select {
+    width: 90%;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+
+
