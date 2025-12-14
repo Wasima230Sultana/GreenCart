@@ -89,7 +89,7 @@ h1 {
     color: #2e7d32;
     margin-bottom: 20px;
     font-weight: bold;
-    font-size: clamp(28px, 5vw, 50px);
+    font-size:40px;
 }
 
 /* ===== BACKGROUND IMAGE ===== */

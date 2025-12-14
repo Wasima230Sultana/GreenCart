@@ -66,7 +66,7 @@ Healthy Lifestyle: Organic products are packed with nutrients, free from synthet
 </div>
 
 <div class='container'>
-        <h2>➕ Add User</h2>
+        <h1>👤 Add User</h1>
         <form method='POST'>
             <input type='text' name='name' placeholder='Full Name' required>
             <input type='email' name='email' placeholder='Email' required>
