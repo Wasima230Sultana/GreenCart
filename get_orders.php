@@ -1,6 +1,16 @@
 <?php
 include "db.php";
+echo "<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Available Products - GreenCart</title>
+    <link rel='stylesheet' href='style.css'>
+</head>
+<body class='user-page'>";
 
+include 'navbar.php';
 
 $result = $conn->query("SELECT * FROM orders");
 

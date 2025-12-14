@@ -17,8 +17,7 @@ echo "<!DOCTYPE html>
 include 'navbar.php';
 
 /* ===== SERVICES SECTION ===== */
-echo "
-<div class='w-[70%] mx-auto mt-20'>
+echo "<div class='w-[70%] mx-auto mt-20'>
     <h1 class='text-green-700 font-bold mb-10  text-4xl'>Services</h1>
 
     <div class='grid grid-cols-1 sm:grid-cols-3 gap-5'>
