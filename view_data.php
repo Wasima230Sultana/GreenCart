@@ -1,5 +1,6 @@
 <?php
 include "db.php";
+
 echo "<!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -11,24 +12,25 @@ echo "<!DOCTYPE html>
 <body class='user-page'>";
 
 include 'navbar.php';
-echo "<link rel='stylesheet' href='style.css'>";
+
 echo "<div class='container'>";
 echo "<h2>🌱 GreenCart Data Viewer</h2>";
 
-
-// PRODUCTS TABLE
+/* ================= PRODUCTS TABLE ================= */
 echo "<h3>📦 Products</h3>";
 $product_result = $conn->query("SELECT * FROM products");
+
 if ($product_result->num_rows > 0) {
-    echo "<table border='1'>";
-    echo "<tr>
-            <th>ID</th>
-            <th>Farmer ID</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Stock</th>
-            <th>Description</th>
-          </tr>";
+    echo "<table border='1' width='100%' cellpadding='8'>
+            <tr>
+                <th>ID</th>
+                <th>Farmer ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Description</th>
+            </tr>";
+
     while ($row = $product_result->fetch_assoc()) {
         echo "<tr>
                 <td>{$row['id']}</td>
@@ -44,19 +46,20 @@ if ($product_result->num_rows > 0) {
     echo "<p>No products found.</p>";
 }
 
-
-// ORDERS TABLE
+/* ================= ORDERS TABLE ================= */
 echo "<h3>🛒 Orders</h3>";
 $order_result = $conn->query("SELECT * FROM orders");
+
 if ($order_result->num_rows > 0) {
-    echo "<table border='1'>";
-    echo "<tr>
-            <th>ID</th>
-            <th>Buyer ID</th>
-            <th>Product ID</th>
-            <th>Quantity</th>
-            <th>Status</th>
-          </tr>";
+    echo "<table border='1' width='100%' cellpadding='8'>
+            <tr>
+                <th>ID</th>
+                <th>Buyer ID</th>
+                <th>Product ID</th>
+                <th>Quantity</th>
+                <th>Status</th>
+            </tr>";
+
     while ($row = $order_result->fetch_assoc()) {
         echo "<tr>
                 <td>{$row['id']}</td>
@@ -71,9 +74,10 @@ if ($order_result->num_rows > 0) {
     echo "<p>No orders found.</p>";
 }
 
-
 echo "<a href='index.html'>⬅ Back</a>";
 echo "</div>";
+
+include 'footer.php';
+
+echo "</body></html>";
 ?>
-
-
