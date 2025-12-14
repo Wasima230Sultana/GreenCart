@@ -40,9 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 <input name='buyer_id' placeholder='Buyer ID' required>
                 <input name='product_id' placeholder='Product ID' required>
                 <input name='quantity' placeholder='Quantity' required>
-                <button>Place Order</button>
-            </form>
-            <a href='index.html'>⬅ Back</a>
+            <button>Place Order</button>
+                </form>
+            <a href='get_orders.php'>⬅ Back</a>
           </div>";
     include 'footer.php';
     exit;

@@ -14,11 +14,8 @@ include 'navbar.php';
 
 $result = $conn->query("SELECT * FROM orders");
 
-
-echo "<link rel='stylesheet' href='style.css'>";
 echo "<div class='container'>";
 echo "<h2>Orders List</h2>";
-
 
 if ($result->num_rows > 0) {
     echo "<table border='1' width='100%' cellpadding='8'>";
@@ -29,7 +26,6 @@ if ($result->num_rows > 0) {
             <th>Quantity</th>
             <th>Status</th>
           </tr>";
-
 
     while ($row = $result->fetch_assoc()) {
         echo "<tr>
@@ -45,9 +41,11 @@ if ($result->num_rows > 0) {
     echo "<p>No orders found.</p>";
 }
 
-
 echo "<a href='index.html'>⬅ Back</a>";
 echo "</div>";
+
+// Include footer
+include 'footer.php';
+
+echo "</body></html>";
 ?>
-
-
