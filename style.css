@@ -6,6 +6,47 @@ body {
     background: linear-gradient(to right, #e8f5e9, #f1f8e9);
     font-family: Arial, Helvetica, sans-serif;
 }
+/* Navbar styling */
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 12px 20px;
+    background-color: #effafa; /* light green */
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+}
+
+.nav-left .brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2e7d32;
+    text-decoration: none;
+}
+
+.nav-right a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: #2e7d32;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.nav-right-btn a {
+     font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #f1f8e9;
+    transition: color 0.3s; 
+}
+.nav-right a:hover {
+    color: #145214;
+}
+
+/* Background only for Add User page */
+body.user-page {
+    background: url('assets/demo-app (2).webp') no-repeat center center fixed;
+    background-size: cover;
+}
 
 /* ===== MAIN CONTAINER ===== */
 .container {

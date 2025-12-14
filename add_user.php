@@ -1,17 +1,26 @@
- <?php
+<?php
 include "db.php";
 
+// Start HTML
+echo "<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Add User - GreenCart</title>
+    <link rel='stylesheet' href='style.css'>
+</head>
+<body class='user-page'>"; // Body class for background
 
 // Handle POST request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // hashed for security
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $role = $_POST['role'];
 
-
     $sql = "INSERT INTO users (name, email, password, role) VALUES ('$name','$email','$password','$role')";
-    echo "<link rel='stylesheet' href='style.css'>";
+
     echo "<div class='container'>";
     if ($conn->query($sql)) {
         echo "<h2>✅ User Added Successfully</h2>";
@@ -21,12 +30,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     echo "<a href='index.html'>⬅ Back</a>";
     echo "</div>";
+
+    // Include footer
+    include 'footer.php';
+    echo "</body></html>";
     exit;
 }
 
-
 // Show registration form
-echo "<link rel='stylesheet' href='style.css'>";
 echo "<div class='container'>
         <h2>➕ Add User</h2>
         <form method='POST'>
@@ -41,6 +52,9 @@ echo "<div class='container'>
         </form>
         <a href='index.html'>⬅ Back</a>
       </div>";
+
+// Include footer
+include 'footer.php';
+
+echo "</body></html>";
 ?>
-
-
