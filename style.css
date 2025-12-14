@@ -237,6 +237,73 @@ pre {
     font-size: 13px;
 }
 
+
+.popular-products {
+    margin-top: 50px;
+    background: #EFEBE3;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.popular-title {
+    text-align: center;
+    color: #179800;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.products-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+.product-info .rating {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+.product-table th, .product-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+.back-btn {
+    display: inline-block;
+    margin: 20px 0;
+    padding: 10px 20px;
+    background: #2e7d32;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+}
+.back-btn:hover {
+    background: #145214;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .container {
