@@ -36,9 +36,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "</body></html>";
     exit;
 }
-
+include 'navbar.php';
 // Show registration form
-echo "<div class='container'>
+echo "
+
+
+<div class='containerA'>
+<div>
+<img class='' src='assets/about.png' alt=''>
+</div>
+<div class='userP'>
+<p>At GreenCart, we bring you the finest locally sourced organic products straight from trusted farmers to your doorstep. Our selection includes fresh vegetables, fruits, grains, and other natural products, all grown without harmful pesticides or chemicals.</p>
+<p class=''>
+100% Organic: Every product is certified and naturally grown.
+<br>
+</p>
+<p>
+Support Local Farmers: By buying from us, you empower small-scale farmers in your community.
+<br>
+</p>
+<p>
+Eco-Friendly: Sustainable farming practices that protect the environment.
+<br>
+</p>
+<p>
+Healthy Lifestyle: Organic products are packed with nutrients, free from synthetic additives.</p>
+</div> 
+
+</div>
+
+<div class='container'>
         <h2>➕ Add User</h2>
         <form method='POST'>
             <input type='text' name='name' placeholder='Full Name' required>
