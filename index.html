@@ -1,21 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8"> <!-- Important for emojis -->
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GreenCart</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<div class="container">
-    <h1>🌱 GreenCart</h1>
-    <p>Local Organic Product Marketplace</p>
 
-    <a href="add_user.php">👤 Add User</a>
-    <a href="add_product.php">➕ Add Product</a>
-    <a href="get_products.php">📦 View Products</a>
-    <a href="place_order.php">🛒 Place Order</a>
-    <a href="view_data.php">🔧 API Tester</a>
-</div>  
+<body>
+    <!-- Background image -->
+    <img class="bg" src="assets/hero-img.png" alt="Background">
+
+    <!-- Main container -->
+    <div class="container">
+        <h1>🌱 GreenCart</h1>
+        <p class="local">Local Organic Product Marketplace</p>
+
+        <!-- Links / menu -->
+        <a href="add_user.php">👤 Add User</a>
+        <a href="add_product.php">➕ Add Product</a>
+        <a href="get_products.php">📦 View Products</a>
+        <a href="place_order.php">🛒 Place Order</a>
+        <a href="view_data.php">🔧 API Tester</a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="fh">
+            <img src="assets/healthy-100.png" alt="Healthy">
+            <p class="fp">GreenCart Project • Web Development</p>
+        </div>
+
+        <div class="fm">
+            <p>🌱 Copyright ©
+                <span id="year"></span> -
+                All rights reserved by GreenCart Industries Ltd
+            </p>
+
+            <div class="social">
+                <img src="assets/facebook.png" alt="Facebook">
+                <img src="assets/linkedin.png" alt="LinkedIn">
+                <a class="ai" href="https://github.com/Wasima230Sultana/GreenCart">
+                    <img src="assets/github.png" alt="GitHub">
+                </a>
+                <img src="assets/html-icon.png" alt="HTML">
+                <img src="assets/css-icon.png" alt="CSS">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 </body>
+
 </html>

@@ -2,40 +2,133 @@
 body {
     margin: 0;
     padding: 0;
-    max-width: 80%;
-    margin: auto;
+    max-width: 100%;
     background: linear-gradient(to right, #e8f5e9, #f1f8e9);
+    font-family: Arial, Helvetica, sans-serif;
 }
-
 
 /* ===== MAIN CONTAINER ===== */
 .container {
-    width: 600px;
-    margin: 80px auto;
-    background: #ffffff;
+    width: 100%;
+    max-width: 600px;
+    margin: 60px auto;
+    background: #ddd;
+    opacity: 0.9;
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
 }
 
-
 /* ===== HEADINGS ===== */
-h1, h2 {
+h1 {
     text-align: center;
     color: #2e7d32;
     margin-bottom: 20px;
+    font-weight: bold;
+    font-size: clamp(28px, 5vw, 50px);
 }
 
+/* ===== BACKGROUND IMAGE ===== */
+.bg {
+    width: 40%;
+    max-width: 300px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    opacity: 0.7;
+}
+
+/* ===== LOCAL TEXT ===== */
+.local {
+    font-size: 20px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background-color: rgb(239, 250, 246);
+    border-radius: 12px;
+    margin: 80px 10px 40px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.fh {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+}
+
+.fp {
+    font-size: clamp(20px, 4vw, 30px);
+    font-weight: bolder;
+    text-align: center;
+}
+
+.fm {
+    text-align: center;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.social img {
+    width: 32px;
+}
+
+/* ===== LINKS ===== */
+.container a {
+    display: block;
+    max-width: 300px;
+    margin: 10px auto;
+    padding: 10px;
+    background: #088a0e;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.container a:hover {
+    background: #2e7d32;
+}
+
+/* Inline links */
+.ai {
+    background: none;
+    display: inline;
+}
+
+.ai:hover {
+    background: none;
+}
 
 /* ===== FORMS ===== */
-input, textarea {
+input,
+textarea,
+select {
     width: 100%;
     padding: 10px;
     margin: 8px 0;
     border-radius: 6px;
     border: 1px solid #ccc;
 }
-
 
 button {
     width: 100%;
@@ -49,19 +142,17 @@ button {
     cursor: pointer;
 }
 
-
 button:hover {
     background: #1b5e20;
 }
 
-
-/* ===== TABLE STYLE ===== */
+/* ===== TABLE ===== */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
+    font-size: 14px;
 }
-
 
 th {
     background: #2e7d32;
@@ -69,31 +160,11 @@ th {
     padding: 10px;
 }
 
-
 td {
     padding: 8px;
     text-align: center;
     border-bottom: 1px solid #ddd;
 }
-
-
-/* ===== LINKS ===== */
-a {
-    display: block;
-    text-align: center;
-    margin-top: 15px;
-    padding: 10px;
-    background: #43a047;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-}
-
-
-a:hover {
-    background: #2e7d32;
-}
-
 
 /* ===== API OUTPUT ===== */
 pre {
@@ -103,13 +174,28 @@ pre {
     overflow-x: auto;
     font-size: 13px;
 }
-input, select {
-    width: 90%;
-    padding: 8px;
-    margin: 5px 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        margin: 40px 10px;
+    }
+
+    .local {
+        font-size: 16px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+
+    .bg {
+        width: 60%;
+        opacity: 0.5;
+    }
+
+    table {
+        font-size: 12px;
+    }
 }
-
-
-
