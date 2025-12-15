@@ -64,7 +64,7 @@ if ($conn->query($sql)) {
 } else {
     echo "<h2>❌ Order Failed</h2>";
 }
-echo "<a href='index.html'>⬅ Back</a>";
+echo "<a href='index.php'>⬅ Back</a>";
 echo "</div>";
 
 include 'footer.php';

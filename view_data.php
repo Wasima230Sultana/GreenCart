@@ -74,7 +74,7 @@ if ($order_result->num_rows > 0) {
     echo "<p>No orders found.</p>";
 }
 
-echo "<a href='index.html'>⬅ Back</a>";
+echo "<a href='index.php'>⬅ Back</a>";
 echo "</div>";
 
 include 'footer.php';

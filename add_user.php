@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-include 'navbar.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +44,17 @@ include 'navbar.php';
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="user-page">
-
+ <div class="navbar">
+    <div class="nav-left">
+        <a  class="brand">🌱 GreenCart</a>
+    </div>
+    <div class="nav-right-btn">
+        <button class="">
+            <a href="login.php">Log in</a>
+        </button>
+        
+    </div>
+</div>
 <!-- ===== INTRO / IMAGE SECTION ===== -->
 <div class="containerA" style="display:flex; gap:20px; align-items:center; margin-top:40px;">
     <div>
@@ -77,7 +87,7 @@ include 'navbar.php';
         <button type="submit">Add User & Login</button>
     </form>
 
-    <a href="index.html">⬅ Back</a>
+    <a href="index.php">⬅ Back</a>
 </div>
 
 <?php include 'footer.php'; ?>
