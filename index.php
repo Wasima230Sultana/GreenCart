@@ -30,7 +30,7 @@ $role = $_SESSION['role'];
         </div>
         <div class="nav-right-btn">
             <button>
-                <a href="logout.php">Logout</a>
+                <a href="login.php">Logout</a>
             </button>
         </div>
     </div>

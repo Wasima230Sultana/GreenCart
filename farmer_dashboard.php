@@ -1,10 +1,5 @@
 <?php
-session_start();
 include "db.php";
-
-/* TEMP SESSION (REMOVE IN PRODUCTION) */
-$_SESSION['farmer_id'] = 1; // example farmer id
-$farmer_id = $_SESSION['farmer_id'];
 
 /* ===== HANDLE ADD PRODUCT ===== */
 if (isset($_POST['add_product'])) {
@@ -13,8 +8,8 @@ if (isset($_POST['add_product'])) {
     $stock       = $_POST['stock'];
     $description = $_POST['description'];
 
-    $sql = "INSERT INTO products (farmer_id,name,price,stock,description)
-            VALUES ('$farmer_id','$name','$price','$stock','$description')";
+    $sql = "INSERT INTO products (name, price, stock, description)
+            VALUES ('$name','$price','$stock','$description')";
     $conn->query($sql);
 }
 
@@ -26,13 +21,13 @@ if (isset($_POST['update_product'])) {
     $stock       = $_POST['stock'];
     $description = $_POST['description'];
 
-    $conn->query("UPDATE products SET name='$name', price='$price', stock='$stock', description='$description' WHERE id='$id' AND farmer_id='$farmer_id'");
+    $conn->query("UPDATE products SET name='$name', price='$price', stock='$stock', description='$description' WHERE id='$id'");
 }
 
 /* ===== HANDLE DELETE PRODUCT ===== */
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
-    $conn->query("DELETE FROM products WHERE id='$id' AND farmer_id='$farmer_id'");
+    $conn->query("DELETE FROM products WHERE id='$id'");
 }
 ?>
 
@@ -41,7 +36,7 @@ if (isset($_GET['delete'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farmer Dashboard - GreenCart</title>
+    <title>Product Dashboard - GreenCart</title>
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
@@ -77,7 +72,7 @@ if (isset($_GET['delete'])) {
 
 <!-- ===== ADD PRODUCT FORM ===== -->
 <div class="container mt-10 bg-white p-6 rounded-lg shadow-lg">
-     <h1 class="text-green-700 text-4xl font-bold mb-5">🌱 Farmer Dashboard</h1>
+     <h1 class="text-green-700 text-4xl font-bold mb-5">🌱 Product Dashboard</h1>
     <h2 class="text-green-700 text-2xl font-bold mb-5">➕ Add Product</h2>
     <form method="POST" class="space-y-4">
         <input name="name" placeholder="Product Name" required class="w-full p-2 border rounded">
@@ -90,10 +85,10 @@ if (isset($_GET['delete'])) {
 
 <!-- ===== PRODUCT LIST ===== -->
 <div class="container mt-10 bg-white p-6 rounded-lg shadow-lg">
-    <h2 class="text-green-700 text-2xl font-bold mb-5">📦 My Products</h2>
+    <h2 class="text-green-700 text-2xl font-bold mb-5">📦 Product List</h2>
 
     <?php
-    $result = $conn->query("SELECT * FROM products WHERE farmer_id='$farmer_id'");
+    $result = $conn->query("SELECT * FROM products");
     if ($result->num_rows > 0) {
         echo '<table class="w-full border-collapse text-center">
                 <tr class="bg-green-700 text-white">

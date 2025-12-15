@@ -23,8 +23,8 @@ echo "<!DOCTYPE html>
 
 echo "<div class='container'>";
 
-// Fetch products with farmer names
-$result = $conn->query("SELECT p.*, u.name AS farmer_name FROM products p JOIN users u ON p.farmer_id=u.id");
+// Fetch products (no farmer_id anymore)
+$result = $conn->query("SELECT * FROM products");
 
 if ($result->num_rows > 0) {
     echo "<div class='popular-products'>
@@ -36,7 +36,6 @@ if ($result->num_rows > 0) {
                     <p class='text-gray-500 text-sm'>Product ID: {$row['id']}</p>
                     <p class='rating'>⭐ 4.5</p>
                     <p class='font-bold text-lg'>{$row['name']}</p>
-                    <p class='text-sm'>By: {$row['farmer_name']}</p>
                     <p class='text-green-700 font-semibold'>\${$row['price']}</p>
                     <p class='text-sm'>Stock: {$row['stock']}</p>
                     <p class='text-sm mt-2'>{$row['description']}</p>
@@ -49,7 +48,7 @@ if ($result->num_rows > 0) {
 }
 
 // Back button
-echo "<a href='farmer_dashboard.php' class='back-btn mt-5 inline-block'>⬅ Back</a>";
+echo "<a href='index.php' class='back-btn mt-5 inline-block'>⬅ Back</a>";
 echo "</div>";
 
 include 'footer.php';

@@ -72,15 +72,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Display products for order
 echo "<h2 class='text-2xl font-bold mt-10 mb-4'>Available Products</h2>
-      <div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-5'>";
+      <div class='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5'>";
 
-$result = $conn->query("SELECT p.*, u.name AS farmer_name FROM products p JOIN users u ON p.farmer_id=u.id");
+$result = $conn->query("SELECT * FROM products");
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo "<div class='product-card bg-white rounded-lg shadow-lg p-5 text-center'>
+                <p class='text-gray-500 text-sm'>Product ID: {$row['id']}</p>
                 <p class='font-bold text-lg'>{$row['name']}</p>
-                <p class='text-sm'>By: {$row['farmer_name']}</p>
                 <p class='text-green-700 font-semibold'>\${$row['price']}</p>
                 <p class='text-sm'>Stock: {$row['stock']}</p>
                 <p class='text-sm mt-2'>{$row['description']}</p>";
