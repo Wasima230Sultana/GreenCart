@@ -1,5 +1,15 @@
 <?php
+session_start();
 include "db.php";
+
+// Redirect to login if not logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: add_user.php");
+    exit;
+}
+
+include 'navbar.php';
+
 echo "<!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -7,84 +17,39 @@ echo "<!DOCTYPE html>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Available Products - GreenCart</title>
     <link rel='stylesheet' href='style.css'>
+    <script src='https://cdn.tailwindcss.com'></script>
 </head>
 <body class='user-page'>";
 
-include 'navbar.php';
-
-$result = $conn->query("SELECT * FROM products");
-
 echo "<div class='container'>";
 
-// Popular Products section
-echo <<<HTML
-<div class="popular-products">
-    <h1 class="popular-title">Popular Products</h1>
-    <div class="products-grid">
-        <div class="product-card">
-            <img src="assets/product-onion.png" alt="Onion">
-            <div class="product-info">
-                <p class="rating">⭐ 4.5</p>
-                <p>Onion 1 KG</p>
-                <p>$39.99</p>
-            </div>
-        </div>
-        <div class="product-card">
-            <img src="assets/product-tomato.png" alt="Tomato">
-            <div class="product-info">
-                <p class="rating">⭐ 4.5</p>
-                <p>Tomato 1 KG</p>
-                <p>$40.00</p>
-            </div>
-        </div>
-        <div class="product-card">
-            <img src="assets/product-potato.png" alt="Potato">
-            <div class="product-info">
-                <p class="rating">⭐ 4.5</p>
-                <p>Potato 1 KG</p>
-                <p>$50.00</p>
-            </div>
-        </div>
-        <div class="product-card">
-            <img src="assets/product-tomato.png" alt="Tomato">
-            <div class="product-info">
-                <p class="rating">⭐ 4.5</p>
-                <p>Tomato 1 KG</p>
-                <p>$40.00</p>
-            </div>
-        </div>
-    </div>
-</div>
-HTML;
+// Fetch products with farmer names
+$result = $conn->query("SELECT p.*, u.name AS farmer_name FROM products p JOIN users u ON p.farmer_id=u.id");
 
-// Table of products from database
 if ($result->num_rows > 0) {
-    echo "<table class='product-table'>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Farmer</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Stock</th>
-                </tr>
-            </thead>
-            <tbody>";
+    echo "<div class='popular-products'>
+            <h1 class='popular-title'>Available Products</h1>
+            <div class='grid grid-cols-3 sm:grid-cols-3 md:grid-cols-2 gap-5'>";
+
     while ($row = $result->fetch_assoc()) {
-        echo "<tr>
-                <td>{$row['id']}</td>
-                <td>{$row['farmer_id']}</td>
-                <td>{$row['name']}</td>
-                <td>\${$row['price']}</td>
-                <td>{$row['stock']}</td>
-              </tr>";
+        echo "<div class='product-card bg-white rounded-lg shadow-lg p-5 text-center'>
+                    <p class='text-gray-500 text-sm'>Product ID: {$row['id']}</p>
+                    <p class='rating'>⭐ 4.5</p>
+                    <p class='font-bold text-lg'>{$row['name']}</p>
+                    <p class='text-sm'>By: {$row['farmer_name']}</p>
+                    <p class='text-green-700 font-semibold'>\${$row['price']}</p>
+                    <p class='text-sm'>Stock: {$row['stock']}</p>
+                    <p class='text-sm mt-2'>{$row['description']}</p>
+                </div>";
     }
-    echo "</tbody></table>";
+
+    echo "</div></div>";
 } else {
-    echo "<p>No products found.</p>";
+    echo "<p>No products available at the moment.</p>";
 }
 
-echo "<a href='index.html' class='back-btn'>⬅ Back</a>";
+// Back button
+echo "<a href='farmer_dashboard.php' class='back-btn mt-5 inline-block'>⬅ Back</a>";
 echo "</div>";
 
 include 'footer.php';

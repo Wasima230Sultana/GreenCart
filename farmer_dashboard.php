@@ -131,7 +131,7 @@ if (isset($_GET['delete'])) {
 </div>
 
 <br>
-<a href="index.php" class="inline-block ml-10 mt-4 text-green-700 font-bold">⬅ Back</a>
+<a href="login.php" class="inline-block ml-10 mt-4 text-green-700 font-bold">⬅ Back</a>
 
 <?php include 'footer.php'; ?>
 </body>

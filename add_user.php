@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit">Add User & Login</button>
     </form>
 
-    <a href="index.php">⬅ Back</a>
+    <a href="login.php">⬅ Back</a>
 </div>
 
 <?php include 'footer.php'; ?>
