@@ -1,87 +1,85 @@
 <?php
+session_start();
 include "db.php";
 
-// Start HTML
-echo "<!DOCTYPE html>
-<html lang='en'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Add User - GreenCart</title>
-    <link rel='stylesheet' href='style.css'>
-</head>
-<body class='user-page'>"; // Body class for background
-
-// Handle POST request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get form data
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $role = $_POST['role'];
 
+    // Insert new user
     $sql = "INSERT INTO users (name, email, password, role) VALUES ('$name','$email','$password','$role')";
 
-    echo "<div class='container'>";
     if ($conn->query($sql)) {
-        echo "<h2>✅ User Added Successfully</h2>";
+        // Auto-login the new user
+        $user_id = $conn->insert_id;
+        $_SESSION['user_id'] = $user_id;
+        $_SESSION['name'] = $name;
+        $_SESSION['role'] = $role;
+
+        // Redirect based on role
+        if ($role === 'Farmer') {
+            header("Location: farmer_dashboard.php");
+            exit;
+        } elseif ($role === 'Buyer') {
+            header("Location: get_products.php");
+            exit;
+        }
     } else {
-        echo "<h2>❌ Failed to Add User</h2>";
-        echo "<p>Error: " . $conn->error . "</p>";
+        $error = "❌ Failed to add user: " . $conn->error;
     }
-    echo "<a href='index.html'>⬅ Back</a>";
-    echo "</div>";
-
-    // Include footer
-    include 'footer.php';
-    echo "</body></html>";
-    exit;
 }
+
 include 'navbar.php';
-// Show registration form
-echo "
-
-
-<div class='containerA'>
-<div>
-<img class='' src='assets/about.png' alt=''>
-</div>
-<div class='userP'>
-<p>At GreenCart, we bring you the finest locally sourced organic products straight from trusted farmers to your doorstep. Our selection includes fresh vegetables, fruits, grains, and other natural products, all grown without harmful pesticides or chemicals.</p>
-<p class=''>
-100% Organic: Every product is certified and naturally grown.
-<br>
-</p>
-<p>
-Support Local Farmers: By buying from us, you empower small-scale farmers in your community.
-<br>
-</p>
-<p>
-Eco-Friendly: Sustainable farming practices that protect the environment.
-<br>
-</p>
-<p>
-Healthy Lifestyle: Organic products are packed with nutrients, free from synthetic additives.</p>
-</div> 
-
-</div>
-
-<div class='container'>
-        <h1>👤 Add User</h1>
-        <form method='POST'>
-            <input type='text' name='name' placeholder='Full Name' required>
-            <input type='email' name='email' placeholder='Email' required>
-            <input type='password' name='password' placeholder='Password' required>
-            <select name='role' required>
-                <option value='Farmer'>Farmer</option>
-                <option value='Buyer'>Buyer</option>
-            </select>
-            <button type='submit'>Add User</button>
-        </form>
-        <a href='index.html'>⬅ Back</a>
-      </div>";
-
-// Include footer
-include 'footer.php';
-
-echo "</body></html>";
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User - GreenCart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="user-page">
+
+<!-- ===== INTRO / IMAGE SECTION ===== -->
+<div class="containerA" style="display:flex; gap:20px; align-items:center; margin-top:40px;">
+    <div>
+        <img src="assets/about.png" alt="About GreenCart" style=" max-width:100%; border-radius:12px;">
+    </div>
+    <div class="userP" style="font-size:18px;">
+        <p>At GreenCart, we bring you the finest locally sourced organic products straight from trusted farmers to your doorstep. Our selection includes fresh vegetables, fruits, grains, and other natural products, all grown without harmful pesticides or chemicals.</p>
+        <p>✅ <strong>100% Organic:</strong> Every product is certified and naturally grown.</p>
+        <p>✅ <strong>Support Local Farmers:</strong> Empower small-scale farmers in your community.</p>
+        <p>✅ <strong>Eco-Friendly:</strong> Sustainable farming practices that protect the environment.</p>
+        <p>✅ <strong>Healthy Lifestyle:</strong> Organic products are packed with nutrients, free from synthetic additives.</p>
+    </div>
+</div>
+
+<!-- ===== ADD USER FORM ===== -->
+<div class="container" style="margin-top:40px;">
+    <h1>👤 Add User</h1>
+
+    <?php if(isset($error)) { echo "<p style='color:red;'>$error</p>"; } ?>
+
+    <form method="POST">
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <select name="role" required>
+            <option value="">Select Role</option>
+            <option value="Farmer">Farmer</option>
+            <option value="Buyer">Buyer</option>
+        </select>
+        <button type="submit">Add User & Login</button>
+    </form>
+
+    <a href="index.html">⬅ Back</a>
+</div>
+
+<?php include 'footer.php'; ?>
+</body>
+</html>
